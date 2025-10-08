@@ -48,7 +48,7 @@ public class GameManager {
         gameState = GameState.STARTING;
 
         // Game Begin
-        teleportPlayersToEnd();
+        teleportPlayersToEnd(); // Players gamemode and Properties
         giveStarterItems();
         new BukkitRunnable() {
             @Override
@@ -60,7 +60,6 @@ public class GameManager {
                 setHunterCompass();
             }
         }.runTaskLater(plugin, 100L); // 5秒后开始
-
         return true;
     }
 
@@ -114,16 +113,21 @@ public class GameManager {
         // 速通者传送到一个位置
         Location speedrunnerSpawn = centerLocation.clone().add(20, 0, 20);
         speedrunner.teleport(speedrunnerSpawn);
+        speedrunner.setGameMode(GameMode.SURVIVAL);
+        speedrunner.setHealth(20.0);
+        speedrunner.setFoodLevel(20);
         speedrunner.sendMessage("§a⛏ §a§l你是速通者! 目标: 击杀末影龙!");
 
         // 所有追杀者传送到统一出生点
         Location huntersSpawn = centerLocation.clone().add(-20, 0, -20);
         for (Player hunter : hunters) {
             hunter.teleport(huntersSpawn);
+            hunter.setGameMode(GameMode.SURVIVAL);
+            hunter.setHealth(20.0);
+            hunter.setFoodLevel(20);
             hunter.sendMessage("§c🏹 §c§l你是猎人! 目标: 消灭速通者!");
         }
 
-        broadcastMessage("§e游戏开始! 完成游戏目标!");
     }
 
     public Location getHuntersSpawnLocation() {
