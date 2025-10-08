@@ -5,4 +5,4 @@ Using "/zerohunter help" get command helper
 
 In Early Development stage.
 
-Automatic start requires installing GameQueuer(Also my plugin & Unpublished) plugin.
+Automatic start requires installing GameQueuer(Also mine and is an unpublished plugin) plugin.
