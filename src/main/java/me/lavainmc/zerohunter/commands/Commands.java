@@ -15,7 +15,6 @@ import java.util.List;
 public class Commands implements CommandExecutor {
 
     String ErrorPrefix = "§c[错误] ";
-
     private final ZeroHunter plugin;
     private final GameManager gameManager;
 
@@ -48,7 +47,7 @@ public class Commands implements CommandExecutor {
             case "reset":
                 handleResetCommand(sender);
                 break;
-            case "testkit":
+            case "givekit":
                 handleTestKitCommand(sender, args);
                 break;
             default:
@@ -107,10 +106,9 @@ public class Commands implements CommandExecutor {
             return;
         }
 
-        sender.sendMessage(ChatColor.GOLD + "=== 游戏状态 ===");
-        sender.sendMessage(ChatColor.YELLOW + "速通者: " + gameManager.getSpeedrunner().getName());
-        sender.sendMessage(ChatColor.RED + "存活追杀者: " + gameManager.getHunters().size() + "人");
         sender.sendMessage(ChatColor.GREEN + "游戏状态: 进行中");
+        sender.sendMessage(ChatColor.YELLOW + "速通者: " + gameManager.getSpeedrunner().getName());
+        sender.sendMessage(ChatColor.RED + "追杀者: " + gameManager.getHunters().size() + "人");
     }
 
     private void handleSetRoleCommand(CommandSender sender, String[] args) {
@@ -134,7 +132,7 @@ public class Commands implements CommandExecutor {
     }
 
     private void handleResetCommand(CommandSender sender) {
-        if (!sender.hasPermission("manhunt.admin")) {
+        if (!sender.hasPermission("zerohunter.admin")) {
             sender.sendMessage(ChatColor.RED + "你没有权限使用此命令!");
             return;
         }
@@ -162,14 +160,14 @@ public class Commands implements CommandExecutor {
         Player player = (Player) sender;
 
         if (args.length < 2) {
-            player.sendMessage(ChatColor.RED + "用法: /zerohunter testkit <speedrunner|hunter>");
+            player.sendMessage(ChatColor.RED + "用法: /zerohunter givekit <speedrunner|hunter>");
             return;
         }
 
         boolean isSpeedrunner = args[1].equalsIgnoreCase("speedrunner");
         plugin.getKitManager().giveRandomEquipment(player, isSpeedrunner);
 
-        String role = isSpeedrunner ? "速通者" : "追杀者";
+        String role = isSpeedrunner ? "速通者" : "猎人";
         player.sendMessage(ChatColor.GREEN + "已获得随机" + role + "装备!");
     }
 
@@ -178,7 +176,8 @@ public class Commands implements CommandExecutor {
         sender.sendMessage(ChatColor.YELLOW + "/zerohunter start - 开始游戏");
         sender.sendMessage(ChatColor.YELLOW + "/zerohunter stop - 结束游戏");
         sender.sendMessage(ChatColor.YELLOW + "/zerohunter status - 查看游戏状态");
-        sender.sendMessage(ChatColor.YELLOW + "/zerohunter setrole <player> <role> - 设置玩家角色(需要权限)");
+        sender.sendMessage(ChatColor.YELLOW + "/zerohunter setrole <player> <role> - 设置玩家身份(需要权限)");
         sender.sendMessage(ChatColor.YELLOW + "/zerohunter reset - 重置末地世界(需要权限)");
+        sender.sendMessage(ChatColor.YELLOW + "/zerohunter givekit <身份> - 获取对应身份的装备");
     }
 }
