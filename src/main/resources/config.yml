@@ -1,0 +1,45 @@
+# ---------------- #
+# -  Ender Hunt  - #
+# -  Config file - #
+# -     Game     - #
+# ---------------- #
+
+#Hunter respawn time (second)
+hunter-respawn-time: 120
+
+
+# ---------------- #
+# -  Ender Hunt  - #
+# -  Config file - #
+# -  Scoreboard  - #
+# ---------------- #
+
+# Placeholders:
+# %hunters% Number of the hunters
+# %hunters_name% List names of the hunters
+# %speedrunner% name of the speedrunner
+
+# Color Code: §
+# https://minecraft.wiki/w/Formatting_codes
+
+scoreboard:
+  title: "§d终末 §e猎人游戏"
+  on-waiting:
+    - "-----------------"
+    - "IN TESTING VERSION"
+    - "⌚ 等待游戏开启..."
+    - ""
+    - "-----------------"
+  on-running:
+    - "-----------------"
+    - "IN TESTING VERSION"
+    - "⛏ 速通者: %speedrunner%"
+    - "🏹 猎人: %hunters%"
+    - ""
+    - "-----------------"
+  on-ended:
+    - "-----------------"
+    - "IN TESTING VERSION"
+    - "⌚ 等待游戏开启..."
+    - ""
+    - "-----------------"

@@ -1,0 +1,22 @@
+name: EnderHunt
+version: '1.0'
+main: me.lavainmc.enderhunt.EnderHunt
+api-version: '1.21'
+authors: [ Lavainmc ]
+description: Plugin for Final Minecraft ManHunt
+website: ""
+
+commands:
+  enderhunt:
+    description: EnderHunt插件主命令
+    usage: /<command> <start|stop|status|setrole>
+    permission: enderhunt.command.use
+    permission-message: "§c你没有权限使用此命令"
+
+permissions:
+  enderhunt.command.use:
+    description: 允许使用EnderHunt基础命令
+    default: true
+  enderhunt.command.admin:
+    description: EnderHunt管理员命令权限
+    default: op
