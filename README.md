@@ -5,8 +5,10 @@ Minecraft Spigot plugin of Final ManHunt
 
 Supported Minecraft Spigot 1.21 and higher version.
 
+Requires Placeholder API
+
 Using "/enderhunt help" get command help
 
 The plugin is in Early Development stage. You can help me to developing this plugin.
 
-Automatic start requires installing GameQueuer(Also mine and is an unpublished plugin).
+Automatic start requires GameQueuer(Also mine and is an unpublished plugin).
